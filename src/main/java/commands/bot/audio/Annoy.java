@@ -53,6 +53,10 @@ public class Annoy extends CustomCommand {
         }
 
         Member member = commandEvent.getMessage().getMentionedMembers().get(0);
+        if(commandEvent.getMember().getId().equals(member.getId())){
+            commandEvent.reply("You can't annoy yourself.");
+            return;
+        }
 
         List<String> flags = FlagHandler.getFlags(commandEvent);
         if(!flags.isEmpty()){
@@ -71,7 +75,6 @@ public class Annoy extends CustomCommand {
         members.add(member.getUser().getId());
         commandEvent.getGuild().getAudioManager().setReceivingHandler(new AudioRecordHandler(commandEvent.getGuild()));
         commandEvent.getGuild().getAudioManager().openAudioConnection(member.getVoiceState().getChannel());
-        System.out.println("should be annoying now.");
     }
 
     public MessageEmbed getDetailedHelp(){

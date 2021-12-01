@@ -6,8 +6,9 @@ import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import commands.bot.admin.*;
 import commands.bot.ai.Chat;
 import commands.bot.ai.Question;
-import commands.bot.audio.*;
+import commands.bot.audio.Record;
 import commands.bot.economy.*;
+import commands.bot.audio.*;
 import commands.bot.economy.games.Crash;
 import commands.bot.economy.games.Dice;
 import commands.bot.economy.games.Slots;
@@ -17,7 +18,6 @@ import commands.bot.admin.Disable;
 import commands.bot.admin.Enable;
 import commands.bot.audio.Delete;
 import commands.bot.audio.Upload;
-import commands.bot.audio.Annoy;
 import commands.console.AnnounceConsoleCommand;
 import commands.console.SaveConsoleCommand;
 import main.listeners.EXPListener;
@@ -38,7 +38,6 @@ import utilities.Utils;
 import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
-import java.lang.Record;
 
 public class MainBot {
     public static JDA builder;
