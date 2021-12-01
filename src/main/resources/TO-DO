@@ -1,0 +1,24 @@
+4. Add 1 types of gambling commands. (Maybe a blackjack.)
+3. Log all account transactions for each account -> implement account statement
+3. finish settings command.
+
+---NEEDED PERMISSIONS---
+Manage Roles
+Manage Channels
+Change Nickname
+Manage Nicknames
+Manage Emojis/Stickers
+View Channels
+Send Messages
+Manage Messages
+Embed Links
+Attach Files
+Read Message History
+Mention Everyone
+Add Reactions
+Connect
+Speak
+Mute Members
+Deafen Members
+Move Members
+Use Voice Activity
