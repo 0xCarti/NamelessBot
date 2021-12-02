@@ -7,6 +7,7 @@ public class Config {
     public static String LIVE_TOKEN;
     public static String TEST_TOKEN;
     public static String OPENAI_KEY;
+    public static String STEAM_KEY;
     public static String OWNER_ID;
     public static String INVITE;
     public static boolean DEBUG;
@@ -31,6 +32,7 @@ public class Config {
                     case "LIVE_TOKEN" -> LIVE_TOKEN = value;
                     case "TEST_TOKEN" -> TEST_TOKEN = value;
                     case "OPENAI_KEY" -> OPENAI_KEY = value;
+                    case "STEAMAPI_KEY" -> STEAM_KEY = value;
                     case "OWNER_ID" -> OWNER_ID = value;
                     case "INVITE" -> INVITE = value;
                     case "DEBUG" -> DEBUG = Boolean.parseBoolean(value);

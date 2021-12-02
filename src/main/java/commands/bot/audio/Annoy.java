@@ -21,7 +21,7 @@ public class Annoy extends CustomCommand {
     public Annoy() {
         this.name = "Annoy";
         this.help = "Annoy someone who's being annoying in the voice channel.";
-        this.syntax = "!annoy <mention-user> [flags]";
+        this.syntax = "~annoy <mention-user> [flags]";
         this.category = MainBot.AUDIO;
     }
 

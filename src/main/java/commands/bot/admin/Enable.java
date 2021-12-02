@@ -44,6 +44,10 @@ public class Enable extends CustomCommand {
                     ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.audio = true;
                     commandEvent.reply("Audio enabled.");
                 }
+                case "steam" -> {
+                    ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.steam = true;
+                    commandEvent.reply("Steam enabled.");
+                }
                 case "all" -> {
                     ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.enableAll();
                     commandEvent.reply("All modules enabled.");

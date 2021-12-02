@@ -1,22 +1,15 @@
 package main.audio;
 
 import commands.bot.audio.Annoy;
-import main.MainBot;
 import net.dv8tion.jda.api.audio.AudioReceiveHandler;
 import net.dv8tion.jda.api.audio.CombinedAudio;
 import net.dv8tion.jda.api.audio.UserAudio;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
-import utilities.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
 
 public class AudioRecordHandler implements AudioReceiveHandler {
     public Guild guild;

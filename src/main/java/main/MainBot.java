@@ -3,35 +3,37 @@ package main;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
-import commands.bot.admin.*;
+import commands.bot.admin.Disable;
+import commands.bot.admin.Disconnect;
+import commands.bot.admin.Enable;
+import commands.bot.admin.Stimulate;
 import commands.bot.ai.Chat;
 import commands.bot.ai.Question;
 import commands.bot.audio.Record;
-import commands.bot.economy.*;
 import commands.bot.audio.*;
+import commands.bot.economy.*;
 import commands.bot.economy.games.Crash;
 import commands.bot.economy.games.Dice;
 import commands.bot.economy.games.Slots;
-import commands.bot.misc.*;
-import commands.bot.audio.Previous;
-import commands.bot.admin.Disable;
-import commands.bot.admin.Enable;
-import commands.bot.audio.Delete;
-import commands.bot.audio.Upload;
+import commands.bot.misc.Changelog;
+import commands.bot.misc.Help;
+import commands.bot.misc.Invite;
+import commands.bot.misc.Ping;
+import commands.bot.steam.csgo.Stats;
 import commands.console.AnnounceConsoleCommand;
 import commands.console.SaveConsoleCommand;
+import commands.console.StopConsoleCommand;
 import main.listeners.EXPListener;
 import main.listeners.EconomyListener;
+import main.listeners.LoadListener;
 import main.managers.ConsoleCommandManager;
-import utilities.ConsoleCommandThread;
-import commands.console.StopConsoleCommand;
 import main.managers.ServerManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import utilities.Config;
-import main.listeners.LoadListener;
+import utilities.ConsoleCommandThread;
 import utilities.Logger;
 import utilities.Utils;
 
@@ -49,6 +51,7 @@ public class MainBot {
     public static final Command.Category MISC = new Command.Category("Misc");
     public static final Command.Category AI = new Command.Category("AI");
     public static final Command.Category ADMIN = new Command.Category("Admin");
+    public static final Command.Category STEAM = new Command.Category("Steam");
     public static final Config config = new Config();
 
     public static void main(String[] args) throws LoginException, IOException {
@@ -103,7 +106,9 @@ public class MainBot {
                 .addCommand(new Help())
                 //AI Commands
                 .addCommand(new Question())
-                .addCommand(new Chat());
+                .addCommand(new Chat())
+                //Steam Commands
+                .addCommand(new Stats());
         ConsoleCommandManager.registerCommand(new StopConsoleCommand());
         ConsoleCommandManager.registerCommand(new SaveConsoleCommand());
         ConsoleCommandManager.registerCommand(new AnnounceConsoleCommand());
