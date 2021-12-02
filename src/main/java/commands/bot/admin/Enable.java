@@ -57,6 +57,7 @@ public class Enable extends CustomCommand {
                 }
 
             }
+            ServerManager.save();
         }catch (ServerNotFoundException e){
             commandEvent.reply(e.getMessage());
         }

@@ -20,6 +20,7 @@ import commands.bot.misc.Help;
 import commands.bot.misc.Invite;
 import commands.bot.misc.Ping;
 import commands.bot.steam.csgo.Stats;
+import commands.bot.steam.csgo.Steam;
 import commands.console.AnnounceConsoleCommand;
 import commands.console.SaveConsoleCommand;
 import commands.console.StopConsoleCommand;
@@ -108,7 +109,8 @@ public class MainBot {
                 .addCommand(new Question())
                 .addCommand(new Chat())
                 //Steam Commands
-                .addCommand(new Stats());
+                .addCommand(new Stats())
+                .addCommand(new Steam());
         ConsoleCommandManager.registerCommand(new StopConsoleCommand());
         ConsoleCommandManager.registerCommand(new SaveConsoleCommand());
         ConsoleCommandManager.registerCommand(new AnnounceConsoleCommand());
