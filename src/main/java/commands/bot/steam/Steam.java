@@ -1,8 +1,9 @@
-package commands.bot.steam.csgo;
+package commands.bot.steam;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
 import commands.CustomCommand;
 import exceptions.ServerNotFoundException;
+import main.MainBot;
 import main.managers.ServerManager;
 import main.managers.SteamManager;
 import org.steambuff.exception.SteamApiException;
@@ -17,6 +18,7 @@ public class Steam extends CustomCommand {
         this.name = "Steam";
         this.help = "Get info on a steam user.";
         this.syntax = Config.PREFIX + this.name + " <steamID|URL>";
+        this.category = MainBot.STEAM;
     }
 
     @Override

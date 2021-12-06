@@ -4,9 +4,12 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import utilities.Utils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,15 +45,17 @@ public class TrackScheduler extends AudioEventAdapter {
     }
 
     public void nextTrack(){
-        previous = player.getPlayingTrack();
+        previous = player.getPlayingTrack().makeClone();
         if(!this.player.startTrack(this.queue.poll(), false)){
             guild.getAudioManager().closeAudioConnection();
         }
     }
     public void prevTrack(){
-        if(!this.player.startTrack(previous, true)){
+        AudioTrack tmp = player.getPlayingTrack().makeClone();
+        if(!this.player.startTrack(previous, false)){
             guild.getAudioManager().closeAudioConnection();
         }
+        previous = tmp;
     }
 
     public BlockingQueue<AudioTrack> getQueue() {
@@ -68,5 +73,29 @@ public class TrackScheduler extends AudioEventAdapter {
         for (AudioTrack track : tmpList){
             queue.offer(track);
         }
+    }
+
+    public MessageEmbed getQueueMessage(){
+        EmbedBuilder builder = new EmbedBuilder();
+        builder.setTitle("Queue - " + queue.size() + " Songs");
+        builder.setColor(Color.MAGENTA);
+        if(player.isPaused()){
+            builder.setDescription("**Paused**");
+        }else{
+            builder.setDescription("**Playing**");
+        }
+        try{
+            builder.addField("Previous", "`" + previous.getInfo().title + "`", true);
+        }catch (NullPointerException e){
+            builder.addField("Previous", "`Nothing Played Previously`", true);
+        }
+        builder.addField("Current", "`" + player.getPlayingTrack().getInfo().title + "`", true);
+        try{
+            builder.addField("Next", "`" + queue.peek().getInfo().title + "`", true);
+        }catch (NullPointerException e){
+            builder.addField("Next", "`Nothing Queued Next`", true);
+        }
+        builder.setFooter("Volume: " + player.getVolume() + "%", null);
+        return builder.build();
     }
 }

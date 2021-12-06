@@ -1,10 +1,7 @@
 package main.managers;
 
-import commands.bot.steam.csgo.Stats;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import org.apache.commons.logging.Log;
 import org.steambuff.SteamApi;
 import org.steambuff.exception.SteamApiException;
 import org.steambuff.method.SteamId;
@@ -14,10 +11,15 @@ import org.steambuff.method.steamuser.entity.StatsGame;
 import org.steambuff.method.steamuser.entity.UserStats;
 import utilities.Config;
 import utilities.Logger;
-
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class SteamManager {
@@ -70,8 +72,15 @@ public class SteamManager {
         builder.setFooter("" + summaries.getProfileUrl());
         builder.setImage(summaries.getAvatarFull());
         builder.addField("SteamID", "`" + summaries.getSteamId().toId64() + "`", true);
-        builder.addField("Last Online", "`" + summaries.getLastLogOff() + "`", true);
-        builder.addField("Status", "`" + summaries.getPersonaState() + "`", true);
+        LocalDateTime date = LocalDateTime.ofEpochSecond(summaries.getLastLogOff(), 0, ZoneOffset.UTC);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy h:mma", Locale.ENGLISH);
+        builder.addField("Status", "`" + summaries.getPersonaState() + "`", false);
+        builder.addField("Last Online", "`" + date.format(formatter) + "`", true);
+        if(summaries.getPersonaState().toString().equals("OFFLINE")){
+            builder.setColor(Color.RED);
+        }else{
+            builder.setColor(Color.GREEN);
+        }
         return builder.build();
     }
 

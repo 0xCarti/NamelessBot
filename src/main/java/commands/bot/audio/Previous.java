@@ -38,5 +38,11 @@ public class Previous extends CustomCommand {
         }
 
         PlayerManager.getInstance().getMusicManager(commandEvent.getGuild()).scheduler.prevTrack();
+        String trackName = PlayerManager.getInstance().getMusicManager(commandEvent.getGuild()).player.getPlayingTrack().getInfo().title;
+        if(trackName.equalsIgnoreCase("unknown title")){
+            trackName = "`Local Audio File`";
+        }
+
+        commandEvent.reply("Now playing: " + trackName);
     }
 }

@@ -20,13 +20,14 @@ import commands.bot.misc.Help;
 import commands.bot.misc.Invite;
 import commands.bot.misc.Ping;
 import commands.bot.steam.csgo.Stats;
-import commands.bot.steam.csgo.Steam;
+import commands.bot.steam.Steam;
 import commands.console.AnnounceConsoleCommand;
 import commands.console.SaveConsoleCommand;
 import commands.console.StopConsoleCommand;
 import main.listeners.EXPListener;
 import main.listeners.EconomyListener;
 import main.listeners.LoadListener;
+import main.listeners.MusicListener;
 import main.managers.ConsoleCommandManager;
 import main.managers.ServerManager;
 import net.dv8tion.jda.api.JDA;
@@ -99,6 +100,7 @@ public class MainBot {
                 .addCommand(new Delete())
                 .addCommand(new Upload())
                 .addCommand(new Annoy())
+                .addCommand(new Player())
                 //Misc Commands
                 .addCommand(new Ping())
                 .addCommand(new Invite())
@@ -138,7 +140,8 @@ public class MainBot {
                 cmdClient,
                 new LoadListener(),
                 new EconomyListener(),
-                new EXPListener());
+                new EXPListener(),
+                new MusicListener());
         Logger.debug("Event listeners have been registered.");
 
         new File("./clips").mkdirs();
