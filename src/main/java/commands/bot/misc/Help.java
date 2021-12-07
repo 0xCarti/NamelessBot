@@ -2,7 +2,7 @@ package commands.bot.misc;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import main.MainBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;

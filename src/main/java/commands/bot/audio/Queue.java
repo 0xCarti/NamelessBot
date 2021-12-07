@@ -2,8 +2,7 @@ package commands.bot.audio;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import commands.CustomCommand;
-import main.managers.OptionManager;
+import commands.bot.CustomCommand;
 import main.managers.ServerManager;
 import exceptions.ServerNotFoundException;
 import main.MainBot;

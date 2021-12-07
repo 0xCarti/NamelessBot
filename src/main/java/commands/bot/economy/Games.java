@@ -2,7 +2,7 @@ package commands.bot.economy;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import commands.bot.economy.games.Game;
 import main.MainBot;
 

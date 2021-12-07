@@ -1,7 +1,7 @@
 package commands.bot.ai;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import utilities.GPT3Impl;
 import main.MainBot;
 import utilities.FlagHandler;

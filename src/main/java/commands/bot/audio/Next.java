@@ -1,8 +1,7 @@
 package commands.bot.audio;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
-import main.managers.OptionManager;
+import commands.bot.CustomCommand;
 import main.managers.ServerManager;
 import exceptions.ServerNotFoundException;
 import main.MainBot;

@@ -27,7 +27,7 @@ public class AudioRecordHandler implements AudioReceiveHandler {
     public void handleUserAudio(@NotNull UserAudio userAudio) {
         if(Annoy.members.contains(userAudio.getUser().getId())) {
             PlayerManager.getInstance().loadNow(guild, "https://soundcloud.com/yungsesh/annoy?si=34f265eddd7b4390b8a05ecf1f7b584f");
-            TrackScheduler.annoying = true;
+            PlayerManager.getInstance().getMusicManager(guild).scheduler.annoying = true;
         }
     }
 

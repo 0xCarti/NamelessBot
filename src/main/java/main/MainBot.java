@@ -14,6 +14,7 @@ import commands.bot.audio.*;
 import commands.bot.economy.*;
 import commands.bot.economy.games.Crash;
 import commands.bot.economy.games.Dice;
+import commands.bot.economy.games.Roulette;
 import commands.bot.economy.games.Slots;
 import commands.bot.misc.Changelog;
 import commands.bot.misc.Help;
@@ -80,6 +81,7 @@ public class MainBot {
                 .addCommand(new Transfer())
                 .addCommand(new Dice())
                 .addCommand(new Slots())
+                .addCommand(new Roulette())
                 .addCommand(new Crash())
                 .addCommand(new Games())
                 //EXP Commands

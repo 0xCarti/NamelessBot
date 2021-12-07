@@ -1,7 +1,7 @@
 package commands.bot.steam;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import exceptions.ServerNotFoundException;
 import main.MainBot;
 import main.managers.ServerManager;

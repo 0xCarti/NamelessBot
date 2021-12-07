@@ -1,6 +1,5 @@
 package commands.console;
 
-import commands.ConsoleCommand;
 import main.managers.ServerManager;
 import utilities.Logger;
 

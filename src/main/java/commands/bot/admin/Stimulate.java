@@ -1,7 +1,7 @@
 package commands.bot.admin;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import main.managers.ServerManager;
 import exceptions.ServerNotFoundException;
 import main.MainBot;

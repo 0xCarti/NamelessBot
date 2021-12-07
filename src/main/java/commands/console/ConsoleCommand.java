@@ -1,4 +1,4 @@
-package commands;
+package commands.console;
 
 public abstract class ConsoleCommand {
     public String name = "";

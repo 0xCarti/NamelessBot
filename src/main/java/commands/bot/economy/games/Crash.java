@@ -1,11 +1,10 @@
 package commands.bot.economy.games;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import exceptions.AccountNotFoundException;
 import exceptions.InsufficientFundsException;
 import exceptions.ServerNotFoundException;
-import main.managers.OptionManager;
 import main.managers.ServerManager;
 import main.MainBot;
 import net.dv8tion.jda.api.EmbedBuilder;

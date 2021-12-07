@@ -1,7 +1,5 @@
 package commands.console;
 
-import commands.ConsoleCommand;
-
 public class AnnounceConsoleCommand extends ConsoleCommand {
 
     public AnnounceConsoleCommand() {

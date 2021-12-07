@@ -1,12 +1,10 @@
 package commands.bot.misc;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import main.MainBot;
-import utilities.Config;
 
 import java.io.IOException;
-import java.net.URLConnection;
 import java.util.Properties;
 
 public class Version extends CustomCommand {

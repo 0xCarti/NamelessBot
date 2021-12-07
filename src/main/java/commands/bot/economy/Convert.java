@@ -1,7 +1,7 @@
 package commands.bot.economy;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import main.managers.ServerManager;
 import main.MainBot;
 import utilities.FlagHandler;

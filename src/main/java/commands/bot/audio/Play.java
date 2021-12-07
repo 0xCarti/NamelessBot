@@ -1,13 +1,13 @@
 package commands.bot.audio;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import main.audio.TrackScheduler;
-import main.managers.OptionManager;
 import main.managers.ServerManager;
 import main.MainBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import utilities.FlagHandler;
 import exceptions.ServerNotFoundException;
 import main.audio.PlayerManager;
@@ -28,7 +28,12 @@ public class Play extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
-        commandEvent.getMessage().delete().queue();
+        try{
+            commandEvent.getMessage().delete().queue();
+        }catch (InsufficientPermissionException e){
+            Logger.debug(e.getMessage());
+            commandEvent.reply(e.getMessage());
+        }
 
         if(Record.recordingServers.contains(commandEvent.getGuild().getId())){
             commandEvent.reply("You can't play music while recording!");
@@ -104,7 +109,7 @@ public class Play extends CustomCommand {
     }
 
     public void play(CommandEvent commandEvent, String url){
-        TrackScheduler.annoying = false;
+        PlayerManager.getInstance().getMusicManager(commandEvent.getGuild()).scheduler.annoying = false;
         TextChannel channel = commandEvent.getTextChannel();
         commandEvent.getGuild().getAudioManager().openAudioConnection(commandEvent.getMember().getVoiceState().getChannel());
         PlayerManager.getInstance().getMusicManager(commandEvent.getGuild()).player.setVolume(25);

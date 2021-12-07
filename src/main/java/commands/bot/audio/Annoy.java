@@ -1,10 +1,11 @@
 package commands.bot.audio;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
-import commands.CustomCommand;
+import commands.bot.CustomCommand;
 import exceptions.ServerNotFoundException;
 import main.MainBot;
 import main.audio.AudioRecordHandler;
+import main.audio.PlayerManager;
 import main.audio.TrackScheduler;
 import main.managers.ServerManager;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -64,7 +65,7 @@ public class Annoy extends CustomCommand {
                 case "-s" -> {
                     members.remove(member.getUser().getId());
                     commandEvent.getGuild().getAudioManager().closeAudioConnection();
-                    TrackScheduler.annoying = false;
+                    PlayerManager.getInstance().getMusicManager(commandEvent.getGuild()).scheduler.annoying = false;
                 }
                 case "-h" -> commandEvent.reply(getDetailedHelp());
                 default -> commandEvent.reply("I could not parse the flag.");

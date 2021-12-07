@@ -21,7 +21,7 @@ public class TrackScheduler extends AudioEventAdapter {
     private final AudioPlayer player;
     private final BlockingQueue<AudioTrack> queue;
     private AudioTrack previous;
-    public static boolean annoying = false; //FIX THIS
+    public boolean annoying = false; //FIX THIS
 
     public TrackScheduler(Guild guild, AudioPlayer player) {
         this.guild = guild;

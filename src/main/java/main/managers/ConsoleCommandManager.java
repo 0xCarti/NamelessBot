@@ -1,6 +1,6 @@
 package main.managers;
 
-import commands.ConsoleCommand;
+import commands.console.ConsoleCommand;
 
 import java.util.ArrayList;
 import java.util.List;
