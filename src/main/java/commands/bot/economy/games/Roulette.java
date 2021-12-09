@@ -5,6 +5,7 @@ import commands.bot.CustomCommand;
 import exceptions.AccountNotFoundException;
 import exceptions.InsufficientFundsException;
 import exceptions.ServerNotFoundException;
+import main.MainBot;
 import main.audio.PlayerManager;
 import main.economy.RouletteWheel;
 import main.managers.ServerManager;
@@ -24,6 +25,7 @@ public class Roulette extends CustomCommand {
         this.name = "Roulette";
         this.help = "Play a game of roulette!";
         this.syntax = "~roulette <red|green|black> <bet>";
+        this.category = MainBot.ECONOMY;
     }
 
     @Override

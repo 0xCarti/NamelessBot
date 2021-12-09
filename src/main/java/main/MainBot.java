@@ -16,10 +16,7 @@ import commands.bot.economy.games.Crash;
 import commands.bot.economy.games.Dice;
 import commands.bot.economy.games.Roulette;
 import commands.bot.economy.games.Slots;
-import commands.bot.misc.Changelog;
-import commands.bot.misc.Help;
-import commands.bot.misc.Invite;
-import commands.bot.misc.Ping;
+import commands.bot.misc.*;
 import commands.bot.steam.csgo.Stats;
 import commands.bot.steam.Steam;
 import commands.console.AnnounceConsoleCommand;
@@ -88,6 +85,7 @@ public class MainBot {
                 .addCommand(new EXP())
                 .addCommand(new Level())
                 .addCommand(new Convert())
+                .addCommand(new Donate())
                 //Music Commands
                 .addCommand(new Record())
                 .addCommand(new Play())

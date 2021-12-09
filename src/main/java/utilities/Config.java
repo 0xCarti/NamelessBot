@@ -10,6 +10,9 @@ public class Config {
     public static String STEAM_KEY;
     public static String OWNER_ID;
     public static String INVITE;
+    public static String PAYPAL;
+    public static String BTC;
+    public static String ETH;
     public static boolean DEBUG;
 
     public Config(){
@@ -35,6 +38,9 @@ public class Config {
                     case "STEAMAPI_KEY" -> STEAM_KEY = value;
                     case "OWNER_ID" -> OWNER_ID = value;
                     case "INVITE" -> INVITE = value;
+                    case "PAYPAL" -> PAYPAL = value;
+                    case "BTC" -> BTC = value;
+                    case "ETH" -> ETH = value;
                     case "DEBUG" -> DEBUG = Boolean.parseBoolean(value);
                     default -> {
                         System.out.println("Unknown setting: " + setting);
