@@ -28,6 +28,7 @@ public class Annoy extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try{
             if(!ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.audio){
                 commandEvent.reply("Audio was not setup on this server.");

@@ -28,6 +28,7 @@ public class Play extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try{
             commandEvent.getMessage().delete().queue();
         }catch (InsufficientPermissionException e){

@@ -18,6 +18,7 @@ public class Balance extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try {
             if(!ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.economy){
                 commandEvent.reply("Economy module is not enabled. Please use !enable econ to enable it.");

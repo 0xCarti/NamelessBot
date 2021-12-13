@@ -41,7 +41,11 @@ public class EXPListener implements EventListener {
                     event.getMessage().reply("You have leveled up to level " + newLevel + "!");
                 }
             }catch (ServerNotFoundException | AccountNotFoundException e){
-                event.getMessage().reply(e.getMessage());
+                try{
+                    event.getMessage().reply(e.getMessage());
+                }catch (InsufficientPermissionException noPerms){
+                    Logger.debug(3, e.getMessage());
+                }
             }catch (InsufficientPermissionException e){
                 Logger.debug(3, "Tried to reward EXP but user does not have permission to do so in [] of [].", event.getChannel().getName(), event.getGuild().getName());
             }catch (IllegalStateException ignored){}

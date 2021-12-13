@@ -30,6 +30,7 @@ public class Record extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try{
             if(!ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.audio){
                 commandEvent.reply("This server does not have audio enabled.");

@@ -18,6 +18,7 @@ public class Games extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         List<Command> commands = MainBot.cmdClient.getCommands();
 
         String reply = "";

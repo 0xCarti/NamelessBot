@@ -18,6 +18,7 @@ public class Donate extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle("Donation Links");
         builder.addField("Paypal", "`" + Config.PAYPAL + "`", false);

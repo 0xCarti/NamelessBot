@@ -6,8 +6,10 @@ import commands.bot.CustomCommand;
 import main.MainBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import utilities.FlagHandler;
 
+import java.io.Console;
 import java.util.List;
 
 public class Help extends CustomCommand {
@@ -20,10 +22,15 @@ public class Help extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         List<String> flags = FlagHandler.getFlags(commandEvent);
         List<String> args = FlagHandler.getArgsList(commandEvent);
         if(args.isEmpty() && flags.isEmpty()){
-            commandEvent.reply(getCategoryHelpEmbed());
+            try{
+                commandEvent.reply(getCategoryHelpEmbed());
+            }catch (InsufficientPermissionException e){
+                commandEvent.reply("I don't have permission to send embeds, use ~helpDM instead.");
+            }
             return;
         }
 

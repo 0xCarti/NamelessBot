@@ -19,6 +19,7 @@ public class Dice extends CustomCommand implements Game {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         String[] args = Utils.getArgs(commandEvent);
         if(args.length < 2){
             commandEvent.reply("Please use the proper syntax.");

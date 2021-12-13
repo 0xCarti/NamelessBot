@@ -15,6 +15,6 @@ public class UserDump extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
-        //Do code.
+        super.execute(commandEvent);
     }
 }

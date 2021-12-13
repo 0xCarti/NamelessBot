@@ -14,6 +14,7 @@ public class Ping extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         commandEvent.reply(" wanted to get pinged!");
     }
 }

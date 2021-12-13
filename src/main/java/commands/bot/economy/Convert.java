@@ -22,6 +22,7 @@ public class Convert extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         List<String> args = FlagHandler.getArgsList(commandEvent);
         if(args.size() < 1){
             commandEvent.reply("Please use th proper syntax.");

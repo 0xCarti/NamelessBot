@@ -27,7 +27,7 @@ public class AccountManager {
                 return account;
             }
         }
-        throw new AccountNotFoundException("Could not find an account associated with that userID");
+        throw new AccountNotFoundException("Could not find an account associated with userID [" + userID + "]");
     }
 
     public void add(String userID, String name, double balance, double exp, int level) {

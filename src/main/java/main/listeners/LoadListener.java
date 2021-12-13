@@ -36,6 +36,7 @@ public class LoadListener implements EventListener {
                     ServerManager.add(server);
                 }
             }
+            Logger.log("Finished connecting to all servers.");
         }
         if (genericEvent instanceof GuildJoinEvent){
             Guild server = ((GuildJoinEvent) genericEvent).getGuild();

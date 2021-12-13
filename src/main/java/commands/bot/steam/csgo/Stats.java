@@ -23,6 +23,7 @@ public class Stats extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try{
             if(!ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.steam){
                 commandEvent.reply("This server does not have steam enabled.");

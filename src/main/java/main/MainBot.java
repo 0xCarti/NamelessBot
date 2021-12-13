@@ -19,9 +19,7 @@ import commands.bot.economy.games.Slots;
 import commands.bot.misc.*;
 import commands.bot.steam.csgo.Stats;
 import commands.bot.steam.Steam;
-import commands.console.AnnounceConsoleCommand;
-import commands.console.SaveConsoleCommand;
-import commands.console.StopConsoleCommand;
+import commands.console.*;
 import main.listeners.EXPListener;
 import main.listeners.EconomyListener;
 import main.listeners.LoadListener;
@@ -40,6 +38,8 @@ import utilities.Utils;
 import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 
 public class MainBot {
     public static JDA builder;
@@ -53,13 +53,14 @@ public class MainBot {
     public static final Command.Category ADMIN = new Command.Category("Admin");
     public static final Command.Category STEAM = new Command.Category("Steam");
     public static final Config config = new Config();
+    public static long start;
 
     public static void main(String[] args) throws LoginException, IOException {
+        start = System.currentTimeMillis();
         Utils.enableConsoleColour();
 
         //Load Servers
         ServerManager.load();
-        Logger.debug("Bot is setup on [] servers.", ServerManager.servers.size());
 
         //Create a command builder and add commands to it.
         Logger.debug("Loading commands into command builder...");
@@ -104,7 +105,8 @@ public class MainBot {
                 //Misc Commands
                 .addCommand(new Ping())
                 .addCommand(new Invite())
-                .addCommand(new Changelog())
+                .addCommand(new Uptime())
+                //.addCommand(new Changelog())
                 //.addCommand(new Version())
                 .addCommand(new Help())
                 //AI Commands
@@ -116,6 +118,9 @@ public class MainBot {
         ConsoleCommandManager.registerCommand(new StopConsoleCommand());
         ConsoleCommandManager.registerCommand(new SaveConsoleCommand());
         ConsoleCommandManager.registerCommand(new AnnounceConsoleCommand());
+        ConsoleCommandManager.registerCommand(new CountConsoleCommand());
+        ConsoleCommandManager.registerCommand(new CleanConsoleCommand());
+        ConsoleCommandManager.registerCommand(new PrefixConsoleCommand());
 
         cmdClient = cmdBuilder.build(); //Create command client by building the builder.
         Logger.debug("Loaded [] commands successfully.", cmdClient.getCommands().size());

@@ -19,6 +19,7 @@ public class Changelog extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         List<String> args = FlagHandler.getArgsList(commandEvent);
         if(args.isEmpty()){
             commandEvent.reply("Please use the proper syntax.");

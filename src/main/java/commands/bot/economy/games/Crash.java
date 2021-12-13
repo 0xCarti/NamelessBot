@@ -38,6 +38,7 @@ public class Crash extends CustomCommand implements Game {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         List<String> args = FlagHandler.getArgsList(commandEvent);
         if(args.isEmpty()){
             commandEvent.reply("You need to specify a bet!");

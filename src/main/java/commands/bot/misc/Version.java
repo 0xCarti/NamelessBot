@@ -19,6 +19,7 @@ public class Version extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("project.properties"));
             commandEvent.reply("Version: " + properties.getProperty("version="));

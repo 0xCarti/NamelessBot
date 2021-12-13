@@ -20,6 +20,7 @@ public class Disable extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         if(!commandEvent.getMember().isOwner() && !commandEvent.getMember().getId().equals(Config.OWNER_ID)) {
             commandEvent.reply("You do not have permission to use this command.");
             return;

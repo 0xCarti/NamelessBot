@@ -34,7 +34,7 @@ public class ServerManager {
                 return server;
             }
         }
-        throw new ServerNotFoundException("Server could not be found. Try running !setup -h");
+        throw new ServerNotFoundException("Server could not be found [" + guildID + "]. Try running !setup -h");
     }
     public static List<String> getServerIDs() {
         List<String> guildIDs = new ArrayList<>();

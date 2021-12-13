@@ -3,6 +3,7 @@ package commands.console;
 import main.MainBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.exceptions.ContextException;
 import net.dv8tion.jda.api.exceptions.ErrorResponseException;
@@ -29,9 +30,8 @@ public class AnnounceConsoleCommand extends ConsoleCommand {
     public void execute(String[] args) {
         for (Guild guild : MainBot.builder.getGuilds()) {
             try {
-                guild.getDefaultChannel().sendMessageEmbeds(getAnnouncementEmbed(String.join(" ", args))).queue((message) ->{
-                    message.delete().queueAfter(10, TimeUnit.MINUTES);
-                });
+                Message message = guild.getDefaultChannel().sendMessageEmbeds(getAnnouncementEmbed(String.join(" ", args))).complete();
+                message.delete().queueAfter(10, TimeUnit.MINUTES);
             }catch (InsufficientPermissionException | ErrorResponseException e) {
                 Logger.debug(3, "Announcement failed to send to " + guild.getName() + ".");
             }
@@ -44,7 +44,7 @@ public class AnnounceConsoleCommand extends ConsoleCommand {
         builder.setDescription(message);
         builder.setColor(Color.RED);
         builder.addField("Support Server", "`https://discord.gg/wxKgrydA3z`", false);
-        builder.setFooter("This message will delete in 10 minutes.");
+        builder.setFooter("This message might delete in 10 minutes.");
         return builder.build();
     }
 }

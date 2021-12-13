@@ -18,6 +18,7 @@ public class EXP extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         try{
             if(!ServerManager.findServer(commandEvent.getGuild().getId()).optionManager.exp){
                 commandEvent.reply("EXP is disabled on this server!");

@@ -19,6 +19,7 @@ public class Chat extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         List<String> args = FlagHandler.getArgsList(commandEvent);
         if (args.size() == 0) {
             commandEvent.reply("Please provide a message to send.");

@@ -15,6 +15,7 @@ public class Invite extends CustomCommand {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        super.execute(commandEvent);
         commandEvent.reply(Config.INVITE);
     }
 }
