@@ -16,9 +16,13 @@ import commands.bot.economy.games.Crash;
 import commands.bot.economy.games.Dice;
 import commands.bot.economy.games.Roulette;
 import commands.bot.economy.games.Slots;
+import commands.bot.economy.stock.Portfolio;
+import commands.bot.economy.stock.Profile;
+import commands.bot.economy.stock.Quote;
+import commands.bot.economy.stock.Stock;
 import commands.bot.misc.*;
-import commands.bot.steam.csgo.Stats;
 import commands.bot.steam.Steam;
+import commands.bot.steam.csgo.Stats;
 import commands.console.*;
 import main.listeners.EXPListener;
 import main.listeners.EconomyListener;
@@ -38,8 +42,6 @@ import utilities.Utils;
 import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoField;
 
 public class MainBot {
     public static JDA builder;
@@ -82,6 +84,10 @@ public class MainBot {
                 .addCommand(new Roulette())
                 .addCommand(new Crash())
                 .addCommand(new Games())
+                .addCommand(new Quote())
+                .addCommand(new Profile())
+                .addCommand(new Stock())
+                .addCommand(new Portfolio())
                 //EXP Commands
                 .addCommand(new EXP())
                 .addCommand(new Level())
@@ -120,7 +126,6 @@ public class MainBot {
         ConsoleCommandManager.registerCommand(new AnnounceConsoleCommand());
         ConsoleCommandManager.registerCommand(new CountConsoleCommand());
         ConsoleCommandManager.registerCommand(new CleanConsoleCommand());
-        ConsoleCommandManager.registerCommand(new PrefixConsoleCommand());
 
         cmdClient = cmdBuilder.build(); //Create command client by building the builder.
         Logger.debug("Loaded [] commands successfully.", cmdClient.getCommands().size());
@@ -149,7 +154,9 @@ public class MainBot {
                 new MusicListener());
         Logger.debug("Event listeners have been registered.");
 
-        new File("./clips").mkdirs();
+        if(new File("./clips").mkdirs()){
+            Logger.debug("Created clips directory.");
+        }
         ConsoleCommandThread thread = new ConsoleCommandThread();
         thread.start();
     }

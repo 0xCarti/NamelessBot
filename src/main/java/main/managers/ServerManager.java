@@ -10,6 +10,8 @@ import utilities.Logger;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ServerManager {
     public static final List<Server> servers = new ArrayList<>();
@@ -92,12 +94,14 @@ public class ServerManager {
     public static class Server{
         public String guildID;
         public AccountManager accountManager;
+        public StockManager stockManager;
         public AudioManager audioManager;
         public OptionManager optionManager;
 
         public Server(String guildID){
             this.guildID = guildID;
             this.accountManager = new AccountManager();
+            this.stockManager = new StockManager();
             this.optionManager = new OptionManager();
         }
 
@@ -110,6 +114,9 @@ public class ServerManager {
         public void setAudioManager(AudioManager audioManager) {
             this.audioManager = audioManager;
         }
+        public void setStockManager(StockManager stockManager) {
+            this.stockManager = stockManager;
+        }
         public void setOptionManager(OptionManager optionManager) {
             this.optionManager = optionManager;
         }
@@ -119,9 +126,19 @@ public class ServerManager {
                 Logger.debug(2, "Starting setup for [].", guild.getName());
                 setupAccounts(members);
                 setupAudio(guild);
+                setupStocks(members);
                 //Notify the people that everything loaded correctly.
                 //guild.getDefaultChannel().sendMessage("Run !help admin to get started!").complete();
                 Logger.debug(2, "Setup is complete for [].", guild.getName());
+            }).onError(error -> {
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        setup(guild);
+                    }
+                };
+                Timer timer = new Timer();
+                timer.schedule(task, 60000);
             });
         }
 
@@ -138,6 +155,17 @@ public class ServerManager {
         //Setup Audio
         private void setupAudio(Guild guild){
             new File("./clips/" + guild.getId()).mkdirs();
+            Logger.debug(1, "\tAudio setup successfully.");
+        }
+
+        //Setup Stocks
+        private void setupStocks(List<Member> members){
+            for(Member member : members){
+                if(!member.getUser().isBot()){
+                    stockManager.addPortfolio(member.getId(), member.getEffectiveName());
+                    Logger.debug(1, "\t\tSetup portfolio for []", member.getEffectiveName());
+                }
+            }
             Logger.debug(1, "\tAudio setup successfully.");
         }
 

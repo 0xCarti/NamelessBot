@@ -41,6 +41,11 @@ public class CleanConsoleCommand extends ConsoleCommand {
             }
             if(!found){
                 File toDelete = new File("./servers/" + ID + ".json");
+                try{
+                    ServerManager.remove(ID);
+                }catch (ServerNotFoundException e){
+                    Logger.error(e.getMessage());
+                }
                 if(toDelete.delete()){
                     Logger.debug(2, "Deleted server: " + ID);
                 }else{

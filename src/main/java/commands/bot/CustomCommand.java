@@ -10,7 +10,7 @@ public abstract class CustomCommand extends Command {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
-        Logger.debug(1, "Executing [][] command on [] for [].", Config.PREFIX, getName(), commandEvent.getGuild().getName(), commandEvent.getSelfUser().getAsTag());
+        Logger.debug(1, "Executing [][] command on [] for [].", Config.PREFIX, getName(), commandEvent.getGuild().getName(), commandEvent.getMember().getUser().getAsTag());
     }
 
     public String getSyntax() {

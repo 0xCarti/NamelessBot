@@ -19,9 +19,10 @@ public class Uptime extends CustomCommand {
     protected void execute(CommandEvent commandEvent) {
         super.execute(commandEvent);
         long now = System.currentTimeMillis() - MainBot.start;
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(now);
-        long minutes = seconds/60;
-        seconds = seconds%60;
-        commandEvent.reply("I've been awake for " + minutes + " minutes and " + seconds + " seconds");
+        long days = TimeUnit.MILLISECONDS.toDays(now);
+        long hours = TimeUnit.MILLISECONDS.toHours(now) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(now));
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(now) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(now));
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(now) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(now));
+        commandEvent.reply("Uptime: " + days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds");
     }
 }

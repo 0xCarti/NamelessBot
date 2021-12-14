@@ -3,6 +3,7 @@ package utilities;
 import java.io.*;
 
 public class Config {
+    public static String STOCKAPI_KEY;
     public static String PREFIX;
     public static String LIVE_TOKEN;
     public static String TEST_TOKEN;
@@ -36,6 +37,7 @@ public class Config {
                     case "TEST_TOKEN" -> TEST_TOKEN = value;
                     case "OPENAI_KEY" -> OPENAI_KEY = value;
                     case "STEAMAPI_KEY" -> STEAM_KEY = value;
+                    case "STOCKAPI_KEY" -> STOCKAPI_KEY = value;
                     case "OWNER_ID" -> OWNER_ID = value;
                     case "INVITE" -> INVITE = value;
                     case "PAYPAL" -> PAYPAL = value;
